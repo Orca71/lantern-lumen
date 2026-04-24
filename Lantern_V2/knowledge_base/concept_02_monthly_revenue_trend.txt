@@ -1,0 +1,60 @@
+METRIC: Monthly Revenue Trend
+CATEGORY: Growth
+
+DEFINITION
+Monthly revenue trend tracks the direction and velocity of a company's
+revenue over time. It answers the most fundamental business question:
+is this company growing, shrinking, or stagnating? In professional
+services, revenue trend is often a leading indicator of future
+profitability and client health, since services revenue is directly
+tied to active client relationships.
+
+HOW IT'S CALCULATED
+Month-over-Month Growth = ((Current Month Revenue - Prior Month Revenue)
+                           / Prior Month Revenue) × 100
+
+Year-over-Year Growth = ((Current Period Revenue - Same Period Last Year)
+                         / Same Period Last Year) × 100
+
+Year-over-year is more reliable for services firms because monthly
+revenue can be lumpy due to project-based billing cycles.
+
+BENCHMARKS — PROFESSIONAL SERVICES INDUSTRY
+Strong Growth:    Above +15% YoY
+Healthy Growth:   +5% to +15% YoY
+Stable:           -5% to +5% YoY
+Concerning:       -5% to -15% YoY
+Critical Decline: Below -15% YoY
+
+WHAT IT TELLS THE ADVISER
+- Whether the company is winning new business faster than losing old
+- Whether the sales pipeline is healthy
+- Whether existing clients are expanding or contracting engagements
+- Whether the business can sustain its current cost structure
+
+WARNING SIGNS
+- Consistent monthly decline for 3 or more consecutive months
+- Year-over-year decline accelerating (getting worse each quarter)
+- Revenue declining while headcount stays flat (productivity collapse)
+- Revenue highly volatile month to month with no seasonal explanation
+  (unstable client base or inconsistent billing practices)
+- Single large project ending creates a sudden revenue cliff
+
+CONNECTIONS TO OTHER METRICS
+- Declining revenue + high fixed expenses = margin compression incoming
+- Declining revenue + high client concentration = one lost client
+  could cause the entire decline
+- Declining revenue + rising DSO = clients reducing spend AND
+  paying slowly — a serious double warning
+- Declining revenue + low churn = clients are staying but spending less
+  (scope reduction problem, not retention problem)
+
+SAMPLE INTERPRETATION
+A services firm shows revenue declining 22% year-over-year. This is
+Critical Decline territory. The adviser should immediately investigate
+whether this is concentrated in one or two lost clients (client
+concentration and churn metrics) or spread broadly across the book
+of business (a market or positioning problem). A 22% YoY decline
+means the company is likely burning cash and will need to either
+cut costs aggressively or accelerate new business development
+within the next two quarters.

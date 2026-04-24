@@ -1,0 +1,69 @@
+METRIC: Client Concentration
+CATEGORY: Risk
+
+DEFINITION
+Client concentration measures how dependent a company's revenue is on
+a small number of clients. It answers the question: if our biggest
+client left tomorrow, how badly would we be hurt? In professional
+services, high client concentration is one of the most common and
+underappreciated risks — a company can be profitable, growing, and
+well-run, and still be one client departure away from a crisis.
+
+HOW IT'S CALCULATED
+Top Client Concentration = (Revenue from Top Client / Total Revenue) × 100
+Top 3 Client Concentration = (Revenue from Top 3 Clients / Total Revenue) × 100
+
+The Herfindahl-Hirschman Index (HHI) can also be used for a more
+complete picture, but top client percentage is the standard
+advisory metric.
+
+BENCHMARKS — PROFESSIONAL SERVICES INDUSTRY
+Top Single Client Concentration:
+  Safe:        Under 15%
+  Acceptable:  15% to 25%
+  Concerning:  25% to 40%
+  Dangerous:   Above 40%
+
+Top 3 Client Concentration:
+  Safe:        Under 35%
+  Acceptable:  35% to 50%
+  Concerning:  50% to 65%
+  Dangerous:   Above 65%
+
+WHAT IT TELLS THE ADVISER
+- How fragile the revenue base is
+- Whether the company has genuine market traction or is dependent
+  on a single relationship
+- Whether the sales team is building a diversified pipeline or
+  relying on one account
+- How much negotiating leverage clients have (high concentration
+  means clients know they have leverage)
+
+WARNING SIGNS
+- Single client above 30% of revenue — one decision by that client
+  can destabilize the entire business
+- Top client concentration increasing over time (the business is
+  becoming more dependent, not less)
+- A single client that is also the slowest payer (concentration + DSO risk)
+- Revenue from top client masking decline in the rest of the book
+- Company unable to raise prices with top client due to dependency
+
+CONNECTIONS TO OTHER METRICS
+- High concentration + declining revenue = likely that top client
+  is reducing spend — investigate immediately
+- High concentration + high DSO = the client that owes the most
+  money is also the one you can least afford to lose
+- High concentration + low churn overall = misleading health signal;
+  churn of one client could be catastrophic
+- High concentration + strong revenue growth = growth may be
+  artificially inflated by one relationship, not real market traction
+
+SAMPLE INTERPRETATION
+A services firm reports top client concentration of 78.7%. This is
+severely Dangerous. Nearly four-fifths of revenue depends on a single
+client relationship. The adviser must treat this as an existential
+risk, not just a diversification concern. Any deterioration in that
+relationship — budget cuts, change in client leadership, competitive
+displacement — would be immediately life-threatening to the business.
+The primary strategic recommendation is aggressive new business
+development to reduce this dependency below 40% within 12 months.

@@ -1,0 +1,72 @@
+METRIC: Client Churn Rate
+CATEGORY: Risk
+
+DEFINITION
+Client churn rate measures the proportion of clients who have stopped
+doing business with the company over a given period. In professional
+services, churn is the mirror image of retention — and retention is
+everything. Acquiring a new client costs five to seven times more than
+retaining an existing one. A high churn rate means the company is
+running on a leaky bucket: no matter how much new business it wins,
+it cannot grow because it keeps losing what it already has.
+
+HOW IT'S CALCULATED
+Churn Rate = (Clients Lost in Period / Clients at Start of Period) × 100
+
+A client is considered churned if any of the following apply:
+  1. Status field is not 'active'
+  2. No invoice activity in the past 90 days (inactive signal)
+  3. No invoices ever recorded (acquired but never billed)
+
+Annual churn rate is the standard reporting period.
+
+BENCHMARKS — PROFESSIONAL SERVICES INDUSTRY
+Annual Client Churn Rate:
+  Excellent:   Under 5%
+  Healthy:     5% to 10%
+  Acceptable:  10% to 15%
+  Warning:     15% to 25%
+  Critical:    Above 25%
+
+Retention rate = 100% minus churn rate.
+A 20% churn rate means the company must replace one in five clients
+every year just to stay flat.
+
+WHAT IT TELLS THE ADVISER
+- Whether the company delivers enough value to retain clients
+- Whether the sales team is winning new clients to offset losses
+- Whether specific client segments or service types have higher attrition
+- Whether the revenue base is stable or eroding underneath the surface
+
+WARNING SIGNS
+- Churn above 20% annually — the company cannot grow under these conditions
+- Churn accelerating year over year (retention is getting worse)
+- High churn concentrated in the largest clients (revenue impact
+  is larger than the client count suggests)
+- Long-tenured clients churning — indicates a change in service quality
+  or value proposition, not just natural attrition
+- Zero churn — may indicate the client base is very small or that
+  inactive clients have not been properly classified
+
+CONNECTIONS TO OTHER METRICS
+- High churn + high client concentration = the clients the company
+  most depends on are the ones it most needs to watch
+- High churn + declining revenue = churn is likely driving the
+  revenue decline, not just coinciding with it
+- High churn + low DSO = clients are leaving but at least they
+  paid before they left (better than the reverse)
+- High churn + low net profit margin = the company is not profitable
+  enough to invest in the retention activities that would reduce churn
+- Low churn + declining revenue = clients are staying but spending less;
+  the problem is scope reduction, not relationship loss
+
+SAMPLE INTERPRETATION
+A services firm shows 3 out of 11 clients classified as churned — a
+27% churn rate. This is Critical. The company is losing more than one
+in four client relationships annually. The adviser should investigate
+whether the churn is concentrated among smaller clients (less damaging)
+or larger ones (potentially catastrophic). Cross-reference with
+revenue trend — if revenue is also declining, churn is almost certainly
+the primary driver. Immediate strategic focus: implement a formal
+client retention program, assign senior leadership to at-risk accounts,
+and conduct exit interviews to understand root causes.

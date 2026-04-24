@@ -1,0 +1,69 @@
+METRIC: Days Sales Outstanding (DSO)
+CATEGORY: Efficiency
+
+DEFINITION
+Days Sales Outstanding measures how long, on average, it takes a company
+to collect payment after an invoice is issued. It is the gap between
+earning revenue and actually receiving the cash. In professional services,
+DSO is critical because the primary asset is time — and unbilled or
+uncollected time is value that has been delivered but not captured.
+High DSO is often the hidden cause of cash flow problems even in
+technically profitable companies.
+
+Key terms: accounts receivable, invoice collection, days outstanding,
+payment speed, receivables turnover, how fast clients pay, collection
+period, billing cycle, overdue invoices, payment delays.
+
+HOW IT'S CALCULATED
+DSO = (Accounts Receivable / Total Revenue) × Number of Days in Period
+
+Simplified version:
+DSO = Average days between invoice issue_date and paid_date
+      for all paid invoices in the period
+
+A DSO of 45 means the company waits 45 days on average to get paid
+after sending an invoice.
+
+BENCHMARKS — PROFESSIONAL SERVICES INDUSTRY
+Excellent:  Under 30 days
+Healthy:    30 to 45 days
+Adequate:   45 to 60 days
+Warning:    60 to 90 days
+Critical:   Above 90 days
+
+WHAT IT TELLS THE ADVISER
+- How effectively the company manages its billing and collections process
+- Whether clients are paying on agreed terms or stretching payments
+- Whether the company has a cash flow problem disguised as a
+  profitability problem
+- How much working capital is trapped in unpaid invoices
+
+WARNING SIGNS
+- DSO above 60 days in a firm with net 30 payment terms
+  (clients are routinely paying late — a collections process problem)
+- DSO increasing over time even while revenue is stable
+  (client payment behavior is deteriorating)
+- DSO above 90 days — some invoices may be uncollectable
+- Large gap between DSO and standard payment terms suggests
+  clients are using the company as an informal credit facility
+- High DSO combined with low cash balance is a liquidity crisis
+  in slow motion
+
+CONNECTIONS TO OTHER METRICS
+- High DSO + low cash balance = immediate cash flow emergency
+- High DSO + high client concentration = one slow-paying client
+  is distorting the entire metric
+- High DSO + declining revenue = clients reducing spend AND
+  paying late — relationship deterioration signal
+- High DSO + healthy profit margin = profitable on paper,
+  struggling in practice
+
+SAMPLE INTERPRETATION
+A services firm reports DSO of 84 days against standard net 30 payment
+terms. This is in the Critical range and represents a serious operational
+failure. Clients are paying on average 54 days late. The adviser should
+flag this as a collections process breakdown, not just a client behavior
+issue. Immediate actions: review aging receivables by client, identify
+the worst offenders, assess whether any receivables are at risk of being
+written off. Cross-reference with client concentration — if the
+slow-paying clients are also the largest, the risk is compounded.

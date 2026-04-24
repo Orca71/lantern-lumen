@@ -1,0 +1,70 @@
+METRIC: Revenue per Employee
+CATEGORY: Efficiency
+
+DEFINITION
+Revenue per employee measures how much revenue the company generates
+for each person on its team. In professional services, people are
+both the primary cost and the primary value creator — the ratio
+between what each employee costs and what each employee generates
+is the fundamental unit economics of the business. A low revenue
+per employee means the company is either undercharging for its
+services, overstaffed, or both.
+
+HOW IT'S CALCULATED
+Revenue per Employee = Total Revenue / Number of Active Employees
+
+Active employees = those currently employed (end_date IS NULL)
+Use paid revenue only — recognized, collected income.
+
+Annual figure is more meaningful than monthly for services firms
+due to billing lumpiness.
+
+BENCHMARKS — PROFESSIONAL SERVICES INDUSTRY
+Revenue per Employee (Annual):
+  Excellent:  Above $200,000
+  Strong:     $150,000 to $200,000
+  Adequate:   $100,000 to $150,000
+  Weak:       $75,000 to $100,000
+  Critical:   Below $75,000
+
+Note: Boutique consulting and high-value advisory firms often
+target $250,000 to $400,000 per employee. Technology-enabled
+services firms may reach $300,000+. Staffing and lower-margin
+services firms typically sit at $75,000 to $120,000.
+
+WHAT IT TELLS THE ADVISER
+- Whether the company is generating enough revenue per person
+  to sustain healthy margins
+- Whether pricing is appropriate for the team's skill level
+- Whether the company is overstaffed relative to its revenue base
+- How the company compares to industry peers on workforce efficiency
+
+WARNING SIGNS
+- Revenue per employee below $100,000 annually in a firm where
+  average salary exceeds $70,000 (margins are mathematically impossible)
+- Revenue per employee declining over time even while headcount
+  is stable (clients are spending less per engagement)
+- Large gap between billing rates and revenue per employee suggests
+  high unbillable time, scope creep, or poor utilization tracking
+- Revenue per employee well below industry benchmarks suggests
+  the firm is competing on price rather than value
+
+CONNECTIONS TO OTHER METRICS
+- Low revenue per employee + high compensation % of expenses =
+  the workforce cost is not justified by what it generates
+- Low revenue per employee + strong net margin = unusual;
+  likely means very low salaries or a lean operating model
+- Low revenue per employee + declining revenue trend = workforce
+  was sized for a larger business that no longer exists
+- High revenue per employee + high churn rate = a small number
+  of high-performing employees carrying the business; fragile
+
+SAMPLE INTERPRETATION
+A services firm has 12 active employees and annual paid revenue of
+$1,440,000. Revenue per employee is $120,000 — in the Adequate range.
+However, if the firm's average fully-loaded employee cost (salary +
+benefits + overhead) is $95,000, the margin contribution per employee
+is only $25,000 — thin but viable. The adviser should note that any
+revenue decline without a corresponding headcount reduction will
+push this into Weak territory rapidly. Cross-reference with expense
+breakdown to confirm actual compensation costs per head.

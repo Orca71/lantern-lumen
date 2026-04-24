@@ -1,0 +1,78 @@
+METRIC: Expense Breakdown
+CATEGORY: Profitability
+
+DEFINITION
+Expense breakdown disaggregates total costs into categories to reveal
+where money is actually going. In professional services, expenses
+tend to cluster into a small number of categories — compensation,
+facilities, technology, marketing, and administration. Understanding
+the composition of expenses is essential for targeted cost management:
+you cannot reduce what you cannot see. Expense breakdown also
+distinguishes between recurring costs (fixed obligations that persist
+regardless of revenue) and one-time costs (controllable and temporary).
+
+HOW IT'S CALCULATED
+Category Percentage = (Category Total / Grand Total Expenses) × 100
+
+Recurring Ratio = (Recurring Expenses / Total Expenses) × 100
+
+A high recurring ratio means the cost structure is largely fixed —
+dangerous in a declining revenue environment because costs cannot
+be easily reduced.
+
+BENCHMARKS — PROFESSIONAL SERVICES INDUSTRY
+Typical expense composition for a healthy services firm:
+  Compensation (salaries, benefits):  55% to 65% of total expenses
+  Facilities & occupancy:             8% to 12%
+  Technology & software:              5% to 10%
+  Marketing & business development:   5% to 10%
+  General & administrative:           8% to 15%
+
+Single category concentration:
+  Acceptable:   Any single category under 40%
+  Concerning:   Any single category 40% to 55%
+  Dangerous:    Any single category above 55%
+
+Recurring expense ratio:
+  Healthy:   Under 60% recurring
+  Warning:   60% to 75% recurring
+  Critical:  Above 75% recurring (highly inflexible cost structure)
+
+WHAT IT TELLS THE ADVISER
+- Which cost categories have the most reduction potential
+- Whether the cost structure is flexible (variable) or rigid (fixed)
+- Whether any single expense category is disproportionately large
+- Whether the company is investing appropriately in growth
+  (marketing) vs. running lean (administrative)
+
+WARNING SIGNS
+- Compensation above 70% of total expenses with declining revenue
+  (headcount is too large for the revenue base — layoffs likely needed)
+- Facilities costs high relative to headcount
+  (underutilized office space — a legacy cost from a larger operation)
+- Technology costs growing rapidly without corresponding revenue growth
+  (tool sprawl or failed technology investments)
+- Marketing near zero in a company with declining revenue
+  (not investing in the growth needed to reverse the trend)
+- Recurring ratio above 75% — the company has almost no ability
+  to cut costs quickly if revenue falls further
+
+CONNECTIONS TO OTHER METRICS
+- High compensation % + low revenue per employee = overstaffed
+  relative to productivity
+- High recurring expenses + declining revenue + low runway =
+  the most dangerous combination; fixed costs will exhaust cash
+- High expenses in one category + healthy margin overall = that
+  category is being offset by strong revenue; watch if revenue dips
+- Expense breakdown should always be read alongside burn rate
+  to understand which categories are driving the cash drain
+
+SAMPLE INTERPRETATION
+A services firm shows compensation at 71% of total expenses, with
+a recurring ratio of 79%. Revenue has declined 17% year over year.
+The adviser should flag this as a structural cost problem. The company
+has a largely fixed cost base dominated by labor, but its revenue is
+shrinking. It cannot cut costs quickly. Unless revenue recovers,
+headcount reduction is the only lever large enough to move the needle.
+The adviser should model the revenue per employee metric to confirm
+whether the team is undersized for the work or oversized for the revenue.

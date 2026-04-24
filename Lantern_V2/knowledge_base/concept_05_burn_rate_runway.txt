@@ -1,0 +1,73 @@
+METRIC: Burn Rate & Runway
+CATEGORY: Liquidity
+
+DEFINITION
+Burn rate is how much cash a company spends per month in excess of
+what it earns. Runway is how many months the company can continue
+operating at its current burn rate before running out of cash.
+Together they are the most urgent liquidity metrics — they tell
+you not just whether the company is struggling, but how much time
+it has to fix the problem. A company can be unprofitable for years
+if it has sufficient runway. A company with no runway has days.
+
+HOW IT'S CALCULATED
+Monthly Burn Rate = Total Monthly Expenses - Total Monthly Revenue
+(only meaningful when expenses exceed revenue; if revenue exceeds
+expenses the company has a positive cash flow, not a burn rate)
+
+Net Burn Rate = Cash spent minus cash received (cash basis)
+Gross Burn Rate = Total cash spent regardless of revenue
+
+Runway (months) = Current Cash Balance / Monthly Burn Rate
+
+Example: Cash balance of $400,000, monthly burn of $45,000
+= 8.9 months of runway.
+
+BENCHMARKS — PROFESSIONAL SERVICES INDUSTRY
+Runway:
+  Safe:        18 months or more
+  Adequate:    12 to 18 months
+  Warning:     6 to 12 months
+  Critical:    Under 6 months
+  Emergency:   Under 3 months
+
+Monthly Burn Rate (relative to revenue):
+  Healthy:     Positive cash flow (no burn)
+  Acceptable:  Burn under 10% of monthly revenue
+  Warning:     Burn 10% to 25% of monthly revenue
+  Critical:    Burn above 25% of monthly revenue
+
+WHAT IT TELLS THE ADVISER
+- Whether the company can survive without external intervention
+- How much time leadership has to execute a turnaround
+- Whether the current strategy is financially sustainable
+- How urgently cost reduction or revenue acceleration is needed
+
+WARNING SIGNS
+- Runway under 12 months with no clear path to profitability
+- Burn rate increasing month over month (the hole is getting deeper)
+- Cash balance declining faster than the P&L suggests
+  (hidden cash drains: prepayments, debt service, owner distributions)
+- Runway sufficient but burn accelerating — the clock is moving faster
+- Company aware of the runway problem but not acting on it
+
+CONNECTIONS TO OTHER METRICS
+- High burn + high DSO = company is losing cash AND its receivables
+  are slow — a compounding liquidity crisis
+- High burn + declining revenue = runway is shorter than it appears
+  because revenue will continue falling
+- High burn + high expenses in one category = expense breakdown
+  will identify the specific cost driver
+- High burn + healthy profit margin = unusual; check whether the
+  margin calculation excludes a major cash cost
+
+SAMPLE INTERPRETATION
+A services firm has a cash balance of $520,000 and monthly expenses
+of $98,000 against monthly revenue of $71,000. Net burn is $27,000
+per month. Runway is 19.3 months. Despite the burn, this is in the
+Adequate range — the company has time to act. The adviser should
+note that runway assumes stable revenue. If revenue continues its
+current decline, recalculate runway using projected revenue, which
+will shorten the timeline materially. Immediate priority: identify
+whether the burn is driven by fixed costs (structural problem requiring
+headcount decisions) or variable costs (controllable with discipline).

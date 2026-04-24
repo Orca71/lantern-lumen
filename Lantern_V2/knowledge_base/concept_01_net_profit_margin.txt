@@ -1,0 +1,53 @@
+METRIC: Net Profit Margin
+CATEGORY: Profitability
+
+DEFINITION
+Net profit margin measures how much of every dollar in revenue a company
+actually keeps as profit after all expenses — including operating costs,
+salaries, taxes, and overhead — have been paid. It is the single most
+important indicator of a company's overall financial health and pricing power.
+
+HOW IT'S CALCULATED
+Net Profit Margin = (Net Income / Total Revenue) × 100
+Net Income = Total Revenue minus Total Expenses
+Example: Revenue of $500,000 and expenses of $350,000 produces a
+net income of $150,000 and a margin of 30%.
+
+BENCHMARKS — PROFESSIONAL SERVICES INDUSTRY
+Excellent:  30% and above
+Healthy:    20% to 29%
+Adequate:   10% to 19%
+Warning:    5% to 9%
+Critical:   Below 5% or negative
+
+WHAT IT TELLS THE ADVISER
+- Whether the company is pricing its services appropriately
+- Whether cost structure is sustainable relative to revenue
+- Whether the business model is fundamentally viable
+- How much buffer exists to absorb revenue shocks or unexpected costs
+
+WARNING SIGNS
+- Margin declining over consecutive periods even while revenue grows
+  (costs are scaling faster than revenue — a structural problem)
+- Margin below 10% in a services firm with no capital expenditure
+  (labor and overhead costs are out of control)
+- Negative margin — the company is actively destroying cash
+- Margin significantly below industry peers suggests underpricing
+  or bloated headcount
+
+CONNECTIONS TO OTHER METRICS
+- Low margin + high burn rate = immediate liquidity crisis risk
+- Low margin + rising DSO = double pressure: not profitable AND
+  not collecting what it earns
+- Low margin + high revenue per employee = pricing problem,
+  not a productivity problem
+- Low margin + rapid revenue decline = existential threat
+
+SAMPLE INTERPRETATION
+A services firm reports net profit margin of 8.3%. This falls in the
+Warning range. While the company is technically profitable, an 8.3%
+margin provides minimal buffer. A 10% revenue decline would push it
+near breakeven. The adviser should investigate whether this reflects
+a temporary cost spike (acceptable) or a structural pricing problem
+(requires intervention). Cross-reference with expense breakdown to
+identify the largest cost driver.
