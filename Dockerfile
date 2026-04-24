@@ -2,23 +2,27 @@ FROM runpod/pytorch:2.2.0-py3.10-cuda12.1.1-devel-ubuntu22.04
 
 WORKDIR /workspace
 
-# Install system deps + Ollama
-RUN apt-get update && apt-get install -y curl zstd && \
-    curl -fsSL https://ollama.com/install.sh | sh
+RUN apt-get update && apt-get install -y curl zstd openssh-server && \
+    curl -fsSL https://ollama.com/install.sh | sh && \
+    mkdir /var/run/sshd && \
+    echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && \
+    echo "PubkeyAuthentication yes" >> /etc/ssh/sshd_config && \
+    echo "PasswordAuthentication no" >> /etc/ssh/sshd_config
 
-# Copy requirements
 COPY requirements.txt .
-
-# Install Python deps
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
-# Copy your code
 COPY . .
 
-# Expose ports
+EXPOSE 22
 EXPOSE 8000
 EXPOSE 8002
 EXPOSE 11434
 
-CMD ["/bin/bash"]
+CMD mkdir -p /root/.ssh && \
+    echo "$PUBLIC_KEY" >> /root/.ssh/authorized_keys && \
+    chmod 700 /root/.ssh && \
+    chmod 600 /root/.ssh/authorized_keys && \
+    service ssh start && \
+    /bin/bash
