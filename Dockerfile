@@ -25,4 +25,4 @@ CMD mkdir -p /root/.ssh && \
     chmod 700 /root/.ssh && \
     chmod 600 /root/.ssh/authorized_keys && \
     service ssh start && \
-    /bin/bash
+    tail -f /dev/null
