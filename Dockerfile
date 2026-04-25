@@ -15,14 +15,13 @@ RUN pip install --upgrade pip && \
 
 COPY . .
 
-EXPOSE 22
-EXPOSE 8000
-EXPOSE 8002
-EXPOSE 11434
+RUN chmod +x /workspace/start_all.sh
+
+EXPOSE 22 8000 8002 11434
 
 CMD mkdir -p /root/.ssh && \
     echo "$PUBLIC_KEY" >> /root/.ssh/authorized_keys && \
     chmod 700 /root/.ssh && \
     chmod 600 /root/.ssh/authorized_keys && \
     service ssh start && \
-    tail -f /dev/null
+    /workspace/start_all.sh
