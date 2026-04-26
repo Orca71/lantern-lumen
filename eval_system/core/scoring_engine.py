@@ -6,7 +6,7 @@ from db.models import EvalRun, Score, TestCase
 from connectors.lantern import LanternConnector
 
 OLLAMA_URL = "http://localhost:11434/api/generate"
-JUDGE_MODEL = "gemma2:27b"
+JUDGE_MODEL = "gemma2:9b"
 
 def call_judge(prompt: str) -> str:
     """
