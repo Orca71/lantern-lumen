@@ -11,7 +11,7 @@ ollama serve &
 sleep 5
 
 echo "📦 Pulling models..."
-ollama pull gemma:2b || true
+ollama pull gemma2:9b  || true
 ollama pull llama3.1:8b || true
 # =========================
 # 2. Start Lantern (8000)
