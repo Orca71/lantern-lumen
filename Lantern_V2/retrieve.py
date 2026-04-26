@@ -20,10 +20,10 @@ from sentence_transformers import SentenceTransformer
 # -------------------------------------------------------------
 # CONFIGURATION
 # -------------------------------------------------------------
-CHROMA_STORE_DIR = "/workspace/Lantern_V2/chroma_store"
+CHROMA_STORE_DIR = "/workspace/lantern-lumen/Lantern_V2/chroma_store"
 COLLECTION_NAME  = "lantern_financial_concepts"
 TOP_K_CONCEPTS   = 3  # how many concept docs to retrieve per question
-SQL_DIR = "/workspace/Lantern_V2/matrix_queries"
+SQL_DIR = "/workspace/lantern-lumen/Lantern_V2/matrix_queries"
 DB_PATHS = {
     "service1": "/workspace/Lantern_V2/databases/service1.db",
     "service2": "/workspace/Lantern_V2/databases/service2.db",
