@@ -19,7 +19,7 @@ ollama pull llama3.1:8b || true
 echo "🔵 Starting Lantern..."
 cd /workspace/lantern-lumen/Lantern_V2
 uvicorn app:app --host 0.0.0.0 --port 8000 &
-
+sleep 20
 # =========================
 # 3. Start Lumen (8002)
 # =========================
