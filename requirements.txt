@@ -6,4 +6,5 @@ requests
 httpx
 sqlalchemy
 chromadb
-sentence-transformers
+sentence-transformers==2.6.1
+transformers==4.38.2
