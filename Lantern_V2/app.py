@@ -16,7 +16,7 @@ from retrieve import retrieve
 import requests as req
 
 app = FastAPI(title='Lantern Intelligence')
-app.mount("/static", StaticFiles(directory="/workspace/Lantern_V2/static"), name="static")
+app.mount("/static", StaticFiles(directory="/workspace/lantern-lumen/Lantern_V2/static"), name="static")
 
 app.add_middleware(
     CORSMiddleware,
