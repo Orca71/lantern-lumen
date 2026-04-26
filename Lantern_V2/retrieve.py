@@ -25,9 +25,9 @@ COLLECTION_NAME  = "lantern_financial_concepts"
 TOP_K_CONCEPTS   = 3  # how many concept docs to retrieve per question
 SQL_DIR = "/workspace/lantern-lumen/Lantern_V2/matrix_queries"
 DB_PATHS = {
-    "service1": "/workspace/Lantern_V2/databases/service1.db",
-    "service2": "/workspace/Lantern_V2/databases/service2.db",
-    "service3": "/workspace/Lantern_V2/databases/service3.db"
+    "service1": "/workspace/lantern-lumen/Lantern_V2/databases/service1.db",
+    "service2": "/workspace/lantern-lumen/Lantern_V2/databases/service2.db",
+    "service3": "/workspace/lantern-lumen/Lantern_V2/databases/service3.db"
 }
 
 # -------------------------------------------------------------
