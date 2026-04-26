@@ -17,8 +17,8 @@ import chromadb
 
 from sentence_transformers import SentenceTransformer
 
-KNOWLEDGE_BASE_DIR = "/workspace/Lantern_V2/knowledge_base"
-CHROMA_STORE_DIR = "/workspace/Lantern_V2/chroma_store"
+KNOWLEDGE_BASE_DIR = "/workspace/lantern-lumen/Lantern_V2/knowledge_base"
+CHROMA_STORE_DIR = "/workspace/lantern-lumen/Lantern_V2/chroma_store"
 COLLECTION_NAME = 'lantern_financial_concepts'
 
 # -------------------------------------------------------------
