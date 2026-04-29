@@ -1,0 +1,334 @@
+# ============================================================
+# Lantern Intelligence — Metrics Schema Registry
+# ============================================================
+# Purpose:
+#   Single source of truth for every metric Lantern recognizes.
+#   Drives both the classification layer and the extractor.
+#
+# How to extend:
+#   Add a new metric block following the same structure.
+#   No Python code changes required.
+#
+# Value types:
+#   percentage  → ratio expressed as 0–100 (e.g., 18.5%)
+#   number      → raw count or continuous value (e.g., 45 days)
+#   currency    → monetary amount (e.g., $120,000)
+#   integer     → whole number only (e.g., headcount)
+#
+# Extraction block:
+#   query        : query_name key in live_data dict
+#   field        : exact column name returned by the SQL query
+#   row          : "first" or "last" — which row to read
+#   display_field: optional — column whose value is appended
+#                  to display_name (e.g. category name)
+#   status_field : optional — column to check before extracting
+#   status_skip  : optional — if status_field equals this value,
+#                  skip normal classification and return status
+# ============================================================
+
+metrics:
+
+  # ----------------------------------------------------------
+  # 1. NET PROFIT MARGIN
+  # ----------------------------------------------------------
+  net_profit_margin:
+    display_name: "Net Profit Margin"
+    category: "Profitability"
+    value_type: percentage
+    unit: "%"
+    range:
+      min: -100
+      max: 100
+    extraction:
+      query: "net_profit_margin"
+      field: "net_profit_margin_pct"
+      row:   "first"
+    thresholds:
+      excellent: { min: 30,   max: 100  }
+      healthy:   { min: 20,   max: 29   }
+      adequate:  { min: 10,   max: 19   }
+      warning:   { min: 5,    max: 9    }
+      critical:  { min: -100, max: 4    }
+    keywords:
+      - net profit margin
+      - profit margin
+      - net margin
+      - margin
+      - net income
+      - profitability
+    notes: >
+      Calculated as (Net Income / Total Revenue) * 100.
+      Negative margin means the company is actively destroying cash.
+
+  # ----------------------------------------------------------
+  # 2. MONTHLY REVENUE TREND
+  # ----------------------------------------------------------
+  revenue_trend:
+    display_name: "Monthly Revenue Trend"
+    category: "Growth"
+    value_type: percentage
+    unit: "% MoM"
+    range:
+      min: -100
+      max: 1000
+    extraction:
+      query: "monthly_revenue_trend"
+      field: "mom_growth_pct"
+      row:   "last"
+    thresholds:
+      strong_growth:    { min: 15,   max: 1000 }
+      healthy_growth:   { min: 5,    max: 15   }
+      stable:           { min: -5,   max: 5    }
+      concerning:       { min: -15,  max: -5   }
+      critical_decline: { min: -100, max: -15  }
+    keywords:
+      - revenue trend
+      - revenue growth
+      - monthly revenue
+      - year over year
+      - YoY
+      - revenue decline
+      - revenue change
+      - month over month
+      - MoM
+    notes: >
+      Takes the most recent month (last row, ordered by month ASC).
+      MoM can be lumpy — use for direction signal, not absolute truth.
+
+  # ----------------------------------------------------------
+  # 3. DAYS SALES OUTSTANDING (DSO)
+  # ----------------------------------------------------------
+  days_sales_outstanding:
+    display_name: "Days Sales Outstanding"
+    category: "Efficiency"
+    value_type: number
+    unit: "days"
+    range:
+      min: 0
+      max: 999
+    extraction:
+      query: "days_sales_outstanding"
+      field: "company_avg_dso"
+      row:   "first"
+    thresholds:
+      excellent: { min: 0,   max: 30  }
+      healthy:   { min: 30,  max: 45  }
+      adequate:  { min: 45,  max: 60  }
+      warning:   { min: 60,  max: 90  }
+      critical:  { min: 90,  max: 999 }
+    keywords:
+      - days sales outstanding
+      - DSO
+      - accounts receivable
+      - invoice collection
+      - days outstanding
+      - payment speed
+      - receivables turnover
+      - how fast clients pay
+      - collection period
+      - billing cycle
+      - overdue invoices
+      - payment delays
+    notes: >
+      company_avg_dso is a window function — same value in every row.
+      Takes first row. DSO above 90 may indicate uncollectable receivables.
+
+  # ----------------------------------------------------------
+  # 4. CLIENT CONCENTRATION — TOP 1
+  # ----------------------------------------------------------
+  client_concentration_top1:
+    display_name: "Top Client Concentration"
+    category: "Risk"
+    value_type: percentage
+    unit: "% of total revenue"
+    range:
+      min: 0
+      max: 100
+    extraction:
+      query: "client_concentration"
+      field: "revenue_pct"
+      row:   "first"
+    thresholds:
+      safe:       { min: 0,  max: 15  }
+      acceptable: { min: 15, max: 25  }
+      concerning: { min: 25, max: 40  }
+      dangerous:  { min: 40, max: 100 }
+    keywords:
+      - top client concentration
+      - top client
+      - largest client
+      - single client concentration
+      - client dependency
+      - client concentration
+    notes: >
+      Rows ordered by client_revenue DESC — first row is top client.
+      Above 40% is considered dangerous.
+
+  # ----------------------------------------------------------
+  # 5a. BURN RATE
+  # Not extracted from SQL — burn_rate column is a dollar amount.
+  # Classification handled by the LLM from burn_status field.
+  # ----------------------------------------------------------
+  burn_rate:
+    display_name: "Burn Rate"
+    category: "Liquidity"
+    value_type: percentage
+    unit: "% of monthly revenue"
+    range:
+      min: 0
+      max: 100
+    thresholds:
+      healthy:    null
+      acceptable: { min: 0,  max: 10  }
+      warning:    { min: 10, max: 25  }
+      critical:   { min: 25, max: 100 }
+    keywords:
+      - burn rate
+      - monthly burn rate
+      - net burn rate
+      - gross burn rate
+      - cash burn
+    notes: >
+      burn_rate SQL column is a dollar amount, not a percentage.
+      No extraction block — not pre-classified. LLM uses burn_status
+      field from the query result directly.
+
+  # ----------------------------------------------------------
+  # 5b. RUNWAY
+  # ----------------------------------------------------------
+  runway:
+    display_name: "Runway"
+    category: "Liquidity"
+    value_type: number
+    unit: "months"
+    range:
+      min: 0
+      max: 999
+    extraction:
+      query:        "burn_rate_runway"
+      field:        "runway_months"
+      row:          "last"
+      status_field: "burn_status"
+      status_skip:  "Profitable"
+    thresholds:
+      safe:      { min: 18, max: 999 }
+      adequate:  { min: 12, max: 18  }
+      warning:   { min: 6,  max: 12  }
+      critical:  { min: 0,  max: 6   }
+      emergency: { min: 0,  max: 3   }
+    keywords:
+      - runway
+      - months of runway
+      - months remaining
+      - cash runway
+    notes: >
+      Takes most recent month (last row, ordered by month ASC).
+      If burn_status is Profitable, runway constraint does not apply.
+      Thresholds assume stable revenue — flag if revenue is declining.
+
+  # ----------------------------------------------------------
+  # 6. EXPENSE BREAKDOWN
+  # ----------------------------------------------------------
+  expense_category_concentration:
+    display_name: "Expense Concentration"
+    category: "Profitability"
+    value_type: percentage
+    unit: "% of total expenses"
+    range:
+      min: 0
+      max: 100
+    extraction:
+      query:         "expense_breakdown"
+      field:         "pct_of_expenses"
+      row:           "first"
+      display_field: "category"
+    thresholds:
+      acceptable: { min: 0,  max: 40  }
+      concerning: { min: 40, max: 55  }
+      dangerous:  { min: 55, max: 100 }
+    typical_ranges:
+      compensation:   { min: 55, max: 65 }
+      facilities:     { min: 8,  max: 12 }
+      technology:     { min: 5,  max: 10 }
+      marketing:      { min: 5,  max: 10 }
+      administrative: { min: 8,  max: 15 }
+    keywords:
+      - expense breakdown
+      - expense category
+      - cost breakdown
+      - compensation expenses
+      - facilities expenses
+      - technology expenses
+      - marketing expenses
+      - administrative expenses
+    notes: >
+      Rows ordered by category_total DESC — first row is largest category.
+      display_field appends the category name to display_name dynamically.
+
+  # ----------------------------------------------------------
+  # 7. REVENUE PER EMPLOYEE
+  # ----------------------------------------------------------
+  revenue_per_employee:
+    display_name: "Revenue per Employee"
+    category: "Efficiency"
+    value_type: currency
+    unit: "USD/employee/year"
+    range:
+      min: 0
+      max: 10000000
+    extraction:
+      query: "revenue_per_employee"
+      field: "revenue_per_employee"
+      row:   "first"
+    thresholds:
+      excellent: { min: 200000, max: 10000000 }
+      strong:    { min: 150000, max: 200000   }
+      adequate:  { min: 100000, max: 150000   }
+      weak:      { min: 75000,  max: 100000   }
+      critical:  { min: 0,      max: 75000    }
+    keywords:
+      - revenue per employee
+      - revenue per head
+      - revenue per headcount
+      - productivity per employee
+      - employee revenue
+    notes: >
+      Single row result. Boutique firms often target $250K-$400K.
+
+  # ----------------------------------------------------------
+  # 8. CLIENT CHURN RATE
+  # ----------------------------------------------------------
+  client_churn_rate:
+    display_name: "Client Churn Rate"
+    category: "Risk"
+    value_type: percentage
+    unit: "% annual"
+    range:
+      min: 0
+      max: 100
+    extraction:
+      query: "client_churn_rate"
+      field: "client_churn_pct"
+      row:   "first"
+    thresholds:
+      excellent:  { min: 0,  max: 5   }
+      healthy:    { min: 5,  max: 10  }
+      acceptable: { min: 10, max: 15  }
+      warning:    { min: 15, max: 25  }
+      critical:   { min: 25, max: 100 }
+    keywords:
+      - churn rate
+      - client churn
+      - churn
+      - client retention
+      - retention rate
+      - clients lost
+      - attrition
+      - client attrition
+    notes: >
+      client_churn_pct is same in every row — takes first row.
+      Zero churn may indicate inactive clients not properly classified.
+
+# ============================================================
+# END OF REGISTRY
+# ============================================================

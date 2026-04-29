@@ -43,13 +43,47 @@ class QuestionRequest(BaseModel):
     question: str
     db_key: str
     history: Optional[List[HistoryExchange]] = []
+
+
 # -------------------------------------------------------------
-# STREAMING ENDPOINT
+# CLASSIFICATION HELPER
 # -------------------------------------------------------------
-# Instead of waiting for the full response, we stream tokens
-# back to the browser as they generate. This makes the UI
-# feel alive — the user sees the answer being written in
-# real time, just like ChatGPT.
+# Runs the full extractor → classifier pipeline on any text.
+# Returns a clean list of dicts safe for JSON serialization.
+# Currency values misrouted to wrong metric types are dropped.
+# -------------------------------------------------------------
+
+def run_classification(text: str) -> list[dict]:
+    """
+    Runs extractor → classifier on text.
+    Returns a JSON-serializable list of classified metric dicts.
+    Drops misrouted currency values (in_range=False + currency flag).
+    """
+    extractions = extract_values(text)
+    classified  = classify(extractions)
+
+    results = []
+    for c in classified:
+        # Drop currency values that landed on the wrong metric type
+        if not c.in_range and c.flag and "currency" in c.flag.lower():
+            continue
+        results.append({
+            "metric":    c.display_name,
+            "value":     c.numeric,
+            "unit":      c.unit,
+            "type":      c.value_type,
+            "threshold": c.threshold,
+            "in_range":  c.in_range,
+            "flag":      c.flag,
+        })
+    return results
+
+
+# -------------------------------------------------------------
+# STREAMING GENERATOR
+# -------------------------------------------------------------
+# Streams tokens to the browser AND collects the full response
+# so it can be classified after streaming completes.
 # -------------------------------------------------------------
 
 def stream_ollama(prompt):
@@ -80,18 +114,23 @@ def stream_ollama(prompt):
     except Exception as e:
         yield f"ERROR: {str(e)}"
 
+
+# -------------------------------------------------------------
+# STREAMING ENDPOINT — /ask
+# -------------------------------------------------------------
+# Streams LLM tokens to the UI in real time.
+# After streaming, a follow-up call to /classify can retrieve
+# the structured metrics for the same response if needed.
+# -------------------------------------------------------------
+
 @app.post("/ask")
 async def ask_question(req_body: QuestionRequest):
     """
-    Main endpoint. Takes a question and db_key, runs the
-    full pipeline, and streams the LLM response back.
+    Main endpoint. Streams the LLM response back to the browser.
+    The UI receives raw text tokens in real time.
     """
     question = req_body.question
     db_key = req_body.db_key
-
-    from adviser import build_prompt, COMPANY_NAMES
-    from retrieve import retrieve
-    from query_router import route
 
     company_name = COMPANY_NAMES.get(db_key, db_key)
     selected_queries = route(question)
@@ -108,18 +147,29 @@ async def ask_question(req_body: QuestionRequest):
         live_data=live_data,
         concepts=concepts,
         selected_queries=selected_queries,
-        history = history
+        history=history
     )
     return StreamingResponse(
         stream_ollama(prompt),
         media_type='text/plain'
     )
+
+
+# -------------------------------------------------------------
+# EVALUATION ENDPOINT — /ask_eval
+# -------------------------------------------------------------
+# Returns the full response as JSON — no streaming.
+# Now includes classified metrics from the pipeline.
+# Used by the eval system and any consumer that needs
+# structured metric data alongside the LLM text.
+# -------------------------------------------------------------
+
 @app.post("/ask_eval")
 async def ask_eval(req_body: QuestionRequest):
     """
-    Evaluation endpoint. Same pipeline as /ask but returns
-    the full reponse and retrieved context as JSON.
-    Used exclusively by the eval system for scoring.
+    Evaluation endpoint. Collects the full response, runs it
+    through the classification pipeline, and returns everything
+    as structured JSON including classified metric values.
     """
     question = req_body.question
     db_key = req_body.db_key
@@ -133,23 +183,36 @@ async def ask_eval(req_body: QuestionRequest):
                 for h in req_body.history]
 
     prompt = build_prompt(
-        question = question,
-        company_name = company_name,
-        live_data = live_data,
-        concepts = concepts,
-        selected_queries = selected_queries,
-        history = history
+        question=question,
+        company_name=company_name,
+        live_data=live_data,
+        concepts=concepts,
+        selected_queries=selected_queries,
+        history=history
     )
-    # Collect full response instead of streaming
+
+    # Collect full response
     full_response = ""
     for token in stream_ollama(prompt):
         if token.startswith("ERROR:"):
             return {"error": token}
         full_response += token
+
+    # Run classification pipeline on the full response
+    classified_metrics = run_classification(full_response)
+    flags = [
+        f"{m['metric']}: {m['flag']}"
+        for m in classified_metrics
+        if m["flag"]
+    ]
+
     return {
         "question": question,
         "company": company_name,
         "answer": full_response,
+        "classified_metrics": classified_metrics,
+        "flags": flags,
+        "has_issues": len(flags) > 0,
         "retrieved_context": {
             "live_data": live_data,
             "concepts": concepts
@@ -158,21 +221,28 @@ async def ask_eval(req_body: QuestionRequest):
     }
 
 
+# -------------------------------------------------------------
+# UTILITY ENDPOINTS
+# -------------------------------------------------------------
+
 @app.post("/route")
 async def get_routes(req_body: QuestionRequest):
     """Returns which queries the router selects for a question."""
     queries = route(req_body.question)
     return {"queries": queries}
 
+
 @app.get("/companies")
 async def get_companies():
-    """Returns the list of available companies"""
+    """Returns the list of available companies."""
     return {
         "companies": [
             {"key": k, "name": v}
             for k, v in COMPANY_NAMES.items()
         ]
     }
+
+
 @app.get("/", response_class=HTMLResponse)
 async def serve_ui():
     with open("templates/index.html", "r") as f:
